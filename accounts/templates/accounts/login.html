@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Login - ABlog{% endblock title %}
+{% block body %}
+    <div class="row justify-content-center my-5">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card shadow border border-dark border-1 rounded-3 p-4">
+                <div class="card-body">
+                    <h3 class="card-title text-center fw-bold mb-4">Login</h3>
+                    <!-- Captures Invalid Password/Username errors -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger p-2 small" role="alert">Your username and password didn't match. Please try again.</div>
+                    {% endif %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_username"
+                                   class="form-label fw-semibold text-secondary small mb-1">Username</label>
+                            <input type="text"
+                                   name="username"
+                                   autofocus
+                                   required
+                                   id="id_username"
+                                   class="form-control"
+                                   placeholder="Enter username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password"
+                                   class="form-label fw-semibold text-secondary small mb-1">Password</label>
+                            <input type="password"
+                                   name="password"
+                                   required
+                                   id="id_password"
+                                   class="form-control"
+                                   placeholder="Enter password">
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-dark btn-lg fs-6 fw-bold py-2 shadow-sm">Login</button>
+                        </div>
+                    </form>
+                    <div class="mt-4 text-center text-muted small">
+                        Don't have an account?
+                        <a class="text-dark text-decoration-underline fw-bold"
+                           href="{% url 'register' %}">Create one here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

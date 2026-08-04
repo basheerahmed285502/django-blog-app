@@ -1,0 +1,18 @@
+# Virtual Environment
+venv/
+
+
+# Django local configurations & secret data
+db.sqlite3
+
+
+# Python compiled cache data
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+
+# Code Editor Settings
+.vscode/
+
