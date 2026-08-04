@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Post
 
@@ -21,6 +21,7 @@ def home(request):
     return render(request, "posts/index.html", {"page_obj": page_obj})
 
 
+@login_required
 def get_post(request, id):
     post = get_object_or_404(
         Post.objects.select_related('user').prefetch_related('comments__user'),
